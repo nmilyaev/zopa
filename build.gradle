@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+group 'zopa'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile "junit:junit:4.12"
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.1.0'
+    compileOnly"org.projectlombok:lombok:1.16.10"
+}
