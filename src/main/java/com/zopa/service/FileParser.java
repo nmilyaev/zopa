@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class FileParser {
-    public static String CSVF_ILE = "market-data.csv";
+//    public static String CSVF_ILE = "market-data.csv";
     private static String CVS_SPLIT_BY = ",";
 
     public List<Lender> readAndParseFile(String filename) {
@@ -20,8 +20,8 @@ public class FileParser {
         int i = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             while ((line = br.readLine()) != null) {
-                if (i==0) continue;
                 i++;
+                if (i==1) continue;
                 // use comma as separator
                 String[] lenderStr = line.split(CVS_SPLIT_BY);
                 lenders.add(getLender(lenderStr));
@@ -39,7 +39,8 @@ public class FileParser {
             rate = Float.parseFloat(str[1]);
             available = Long.parseLong(str[2]);
         } catch (NumberFormatException e) {
-            System.out.println("Unable parse the row: " + String.join(",", str));
+            // TODO another option would be to consume the exception and log it as an error, then continue
+            throw new IllegalArgumentException("Unable parse the row: " + String.join(",", str));
         }
         System.out.println("Parsed the row: " + Arrays.stream(str).collect(Collectors.joining(",")));
         return new Lender(str[0], rate, available);
