@@ -6,12 +6,10 @@ import java.math.RoundingMode;
 public class RepaymentCalculator {
 
     public BigDecimal calculateMonthlyRepayment(int months, int amount, double annualRate) {
-        BigDecimal monthlyRate = convert(annualRate).divide(convert(12));
-        BigDecimal total = convert(amount);
-        BigDecimal result = total.multiply(monthlyRate.add(monthlyRate.divide(
-                convert(Math.pow(1 + monthlyRate.intValue(), months) - 1)
-        )));
-        return result;
+        double monthlyRate = annualRate/12;
+        double div = monthlyRate/(Math.pow(1+monthlyRate, months)-1);
+        double result = amount * (monthlyRate + (div));
+        return convert(result);
     }
 
     private BigDecimal convert(int value) {

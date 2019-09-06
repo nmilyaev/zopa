@@ -18,6 +18,6 @@ public class RepaymentCalculatorTest {
     @Test
     public void shouldCalculateRateforExample(){
         BigDecimal repayment = calculator.calculateMonthlyRepayment(36, 1000, 0.07f);
-        assertEquals(30.78f, repayment.floatValue(), 0.01d);
+        assertEquals(30.88f, repayment.floatValue(), 0.01d);
     }
 }

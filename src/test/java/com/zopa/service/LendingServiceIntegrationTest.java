@@ -26,9 +26,9 @@ public class LendingServiceIntegrationTest {
         URL resource = getClass().getClassLoader().getResource("market-data.csv");
         String filename = resource.getPath();
         Repayment repayment = service.calculateMonthlyRepayment(totalAmount, repaymentPeriod, filename);
-        assertEquals(30.78, repayment.getMonthlyAmount().doubleValue(), 0.1);
+        assertEquals(30.88, repayment.getMonthlyAmount().doubleValue(), 0.01);
         assertEquals(0.07, repayment.getRate().doubleValue(), 0.001);
-        assertEquals(1108.10, repayment.getTotalAmount().doubleValue(), 0.01);
+        assertEquals(1111.68, repayment.getTotalAmount().doubleValue(), 0.01);
     }
 
     // TODO - add tests for more test cases
