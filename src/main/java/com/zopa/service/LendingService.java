@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 @Setter
 public class LendingService {
-    private static int DEFAULT_DURATION_MONTHS = 36;
+    public static int DEFAULT_DURATION_MONTHS = 36;
     public static String DEFAULT_CSVF_FILE = "market-data.csv";
 
     // TODO : NB this could all be auto-wired using IoC framework, ie Spring
